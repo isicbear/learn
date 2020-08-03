@@ -49,6 +49,20 @@ spring:
         url-pattern: /*
         # ���Թ��˸�ʽ
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+  redis:
+    database: 0
+    host: 182.92.118.11
+    port: 6379
+    timeout: 5000
+    password: 123456
+  rabbitmq:
+    host: 182.92.118.11
+    port: 5672
+    username: huaqiao
+    password: huaqiao
+  elasticsearch:
+    rest:
+      uris: http://182.92.118.11:9200
 
 mybatis-plus:
   mapper-locations: classpath:/com/example/swagger/learn/mapper/*Mapper.xml
@@ -76,3 +90,5 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
     cache-enabled: false
+
+

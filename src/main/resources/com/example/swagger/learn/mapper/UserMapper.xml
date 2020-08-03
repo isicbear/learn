@@ -7,4 +7,7 @@
         where age > #{age} and name like connect("%",#{name})
     </select>
 
+    <select id="selectPage" resultType="java.util.Map">
+        select id,age from user
+    </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.example.swagger.learn.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.swagger.learn.dao.UserMapper;
 import com.example.swagger.learn.entity.User;
@@ -21,4 +23,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.selectBySomething(params);
     }
 
+    @Override
+    public IPage<Map<String,Object>> selectByPage(Page<Map<String,Object>> page) {
+        return userMapper.selectPage(page);
+    }
 }
