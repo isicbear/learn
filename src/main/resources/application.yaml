@@ -60,9 +60,9 @@ spring:
     port: 5672
     username: huaqiao
     password: huaqiao
-  elasticsearch:
-    rest:
-      uris: http://182.92.118.11:9200
+#  elasticsearch:
+#    rest:
+#      uris: http://182.92.118.11:9200
 
 mybatis-plus:
   mapper-locations: classpath:/com/example/swagger/learn/mapper/*Mapper.xml
@@ -90,5 +90,9 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
     cache-enabled: false
+
+blaze:
+  graph:
+    service_url: http://182.92.118.11/blazegraph
 
 

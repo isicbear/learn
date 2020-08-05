@@ -1,6 +1,6 @@
 # learn
 something with java
 
-### current: swagger ，restful api ， mybatis-plus
-### next: shiro , elasticsearch , redis , rabbitmq ，spring cloud 
-### unsure: hadoop , spark , flink , blazegraph
+### current: swagger , restful api , mybatis-plus , redis , rabbitmq
+### next: shiro , elasticsearch , spring cloud , netty
+### unsure: hadoop , spark , flink , blazegraph , kafka

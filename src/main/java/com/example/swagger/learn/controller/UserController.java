@@ -8,7 +8,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.swagger.learn.entity.User;
 import com.example.swagger.learn.rabbitmq.Sender;
 import com.example.swagger.learn.service.UserService;
+import com.example.swagger.learn.util.BlazegraphUtil;
 import com.example.swagger.learn.util.RedisUtil;
+import com.tinkerpop.blueprints.Edge;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class UserController {
     private RedisUtil redisUtil;
     @Autowired
     private Sender sender;
+    @Autowired
+    private BlazegraphUtil blazegraphUtil;
 
     /*
     * restful  get/1
@@ -117,6 +121,13 @@ public class UserController {
     public String testRabbitMQ(){
         sender.sendDirectQueue();
         return "success";
+    }
+
+    @ApiOperation("test blazegraph")
+    @GetMapping("/user/blazegraph")
+    public List<String> testBlazegraph(){
+        List<String> edgeList = blazegraphUtil.returnAllEdge();
+        return edgeList;
     }
 }
 
