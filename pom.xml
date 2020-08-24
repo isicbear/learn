@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
         <mybatisplus.version>3.3.2</mybatisplus.version>
         <blazegraph.version>2.0.0</blazegraph.version>
     </properties>
@@ -130,11 +130,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>ojdbc</groupId>
-            <artifactId>ojdbc</artifactId>
-            <version>14</version>
         </dependency>
 
         <!-- jdk9之后不包含下列包 -->

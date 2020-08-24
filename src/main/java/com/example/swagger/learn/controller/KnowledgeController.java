@@ -11,6 +11,7 @@ import com.example.swagger.learn.util.POIUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,6 +65,12 @@ public class KnowledgeController {
         return "success";
     }
 
+    @GetMapping("/get/{key}")
+    public Map<String,String> test2(@PathVariable String key){
+
+       return CommonIOUtil.test10(key);
+
+    }
 
 }
 

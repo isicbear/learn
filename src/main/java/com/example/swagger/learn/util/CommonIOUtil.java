@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.junit.Test;
+import org.openrdf.query.Binding;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.rio.RDFFormat;
@@ -91,7 +92,7 @@ public class CommonIOUtil {
             while (lineIterator.hasNext()) {
                 i++;
                 String next = lineIterator.next();
-                String encode = URLEncoder.encode(next, StandardCharsets.UTF_8);
+               // String encode = URLEncoder.encode(next, StandardCharsets.UTF_8);
                 String replace = next.replace('\"', '_').replace("“", "_").replace("”", "_").replace(" ", "");
                 String[] strings = replace.split("\t");
                 // todo   load data to blazegraph  6500000条数据比较合适
@@ -114,7 +115,7 @@ public class CommonIOUtil {
 
     @Test
     public void test2() {
-        File file = new File("E:\\scistor\\2baike_triples.txt");
+        /*File file = new File("E:\\scistor\\2baike_triples.txt");
         try {
             int i = 0;
             LineIterator lineIterator = FileUtils.lineIterator(file, "UTF-8");
@@ -135,7 +136,7 @@ public class CommonIOUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     // todo useful 效率高 但是数据量过大的时候会造成数据丢失
@@ -449,6 +450,47 @@ public class CommonIOUtil {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // todo randomAccessFile 结合线程池 实现 多段文件拷贝
+    public void test9() throws Exception {
+
+        RandomAccessFile file = new RandomAccessFile("", "");
+
+
+    }
+
+
+    public static Map<String,String> test10(String key) {
+
+        String queryStr = "select * where {<http://scistor.com/" + key + ">  ?p ?o }";
+        Map<String,String> map = new HashMap<>();
+        try {
+            TupleQueryResult result = repository.prepareTupleQuery(queryStr).evaluate();
+            while (result.hasNext()) {
+                BindingSet next = result.next();
+                String o = next.getBinding("o").getValue().stringValue();
+                String p = next.getBinding("p").getValue().stringValue();
+                // type 和 desc 要特殊处理
+                getProp(map,o,p);
+            }
+            result.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return map;
+    }
+
+    private static void getProp(Map<String,String> map,String o,String p) {
+        if(p.equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")){
+            map.put("type",o.substring(o.lastIndexOf('/') + 1));
+        } else if(p.equals("http://scistor.desc.com")){
+            map.put("desc",o);
+        }else {
+            map.put(p.substring(p.lastIndexOf('/') + 1),o.substring(o.lastIndexOf('/') + 1));
+        }
     }
 
 
