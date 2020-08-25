@@ -93,5 +93,6 @@ mybatis-plus:
 
 blaze:
   url: http://182.92.118.11/blazegraph
+  namespace: scistor
 
 

@@ -32,14 +32,10 @@ public class KnowledgeServiceImpl extends ServiceImpl<KnowledgeMapper, Knowledge
     }
 
     @Override
-    public String readBlazegraph(String key) {
+    public String readBlazegraph(String key,String namespace) {
         String queryStr = "select * {<http://scistor.com/" + key + "> ?p ?o}";
         Map<String,String> header = new HashMap<>();
         header.put("Accept","application/sparql-results+json");
-        String result = blazegraphClient.read(queryStr,header);
-
-
-        return result;
-
+        return blazegraphClient.read(queryStr,namespace,header);
     }
 }

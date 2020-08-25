@@ -72,9 +72,9 @@ public class KnowledgeController {
 
     }
 
-    @GetMapping("/feign/{key}")
-    public String testFeign(@PathVariable String key){
-        return knowledgeService.readBlazegraph(key);
+    @GetMapping("/feign/{key}/{namespace}")
+    public String testFeign(@PathVariable String key,@PathVariable String namespace){
+        return knowledgeService.readBlazegraph(key,namespace);
     }
 
 

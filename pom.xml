@@ -165,6 +165,13 @@
             <artifactId>gson</artifactId>
         </dependency>
 
+        <!-- quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
         <!-- jdk9之后不包含下列包 -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
