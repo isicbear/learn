@@ -9,6 +9,7 @@ import com.example.swagger.learn.feign.BlazegraphClient;
 import com.example.swagger.learn.service.CategoryService;
 import com.example.swagger.learn.service.KnowledgeService;
 import com.google.gson.Gson;
+import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

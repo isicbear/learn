@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@FeignClient(name = "blazegraph",url = "${blaze.url}")
+@FeignClient(name = "blazegraph",url = "${blaze.url}",fallbackFactory = BlazeFallbackFactory.class)
 public interface BlazegraphClient {
 
     @RequestMapping(value ="/namespace/{namespace}/sparql",method = RequestMethod.GET)
     String read(@RequestParam("query") String query,@PathVariable String namespace, @RequestHeader Map<String,String> header);
+
+
 
 }
