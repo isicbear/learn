@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class BlazegraphUtil {
 
-    @Value("${blaze.graph.service_url}")
+    @Value("${blaze.url}")
     private String serviceURl;
 
     /**

@@ -8,4 +8,6 @@ public interface KnowledgeService extends IService<Knowledge> {
 
     boolean saveKnowledgeCategory(String knowledgeId,String categoryId);
 
+    String readBlazegraph(String key);
+
 }

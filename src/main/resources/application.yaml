@@ -92,7 +92,6 @@ mybatis-plus:
     cache-enabled: false
 
 blaze:
-  graph:
-    service_url: http://182.92.118.11/blazegraph
+  url: http://182.92.118.11/blazegraph
 
 
