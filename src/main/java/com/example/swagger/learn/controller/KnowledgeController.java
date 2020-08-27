@@ -11,9 +11,11 @@ import com.example.swagger.learn.util.POIUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -63,6 +65,28 @@ public class KnowledgeController {
 
         return "success";
     }
+
+    @GetMapping("/get/{key}")
+    public Map<String,String> test2(@PathVariable String key){
+
+       return CommonIOUtil.test10(key);
+
+    }
+
+    @GetMapping("/feign/{key}/{namespace}")
+    public String testFeign(@PathVariable String key,@PathVariable String namespace){
+
+        ExecutorService threadPool = Executors.newFixedThreadPool(10); // 单例模式 双重锁检验
+        // 资源隔离 设置10个线程
+
+        threadPool.execute(()->{
+            knowledgeService.readBlazegraph(key,namespace);
+        });
+
+
+        return knowledgeService.readBlazegraph(key,namespace);
+    }
+
 
 
 }
