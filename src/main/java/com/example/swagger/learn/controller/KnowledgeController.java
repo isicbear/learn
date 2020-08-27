@@ -75,6 +75,15 @@ public class KnowledgeController {
 
     @GetMapping("/feign/{key}/{namespace}")
     public String testFeign(@PathVariable String key,@PathVariable String namespace){
+
+        ExecutorService threadPool = Executors.newFixedThreadPool(10); // 单例模式 双重锁检验
+        // 资源隔离 设置10个线程
+
+        threadPool.execute(()->{
+            knowledgeService.readBlazegraph(key,namespace);
+        });
+
+
         return knowledgeService.readBlazegraph(key,namespace);
     }
 

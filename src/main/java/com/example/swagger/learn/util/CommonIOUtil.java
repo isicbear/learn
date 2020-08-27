@@ -493,5 +493,20 @@ public class CommonIOUtil {
         }
     }
 
+    @Test
+    public void test13() throws Exception{
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        for (int i = 0; i < 10; i++) {
+            executorService.execute(()->{
+                System.out.println(ThreadPoolUtil.getThreadPool().hashCode());
+            });
+        }
+
+        Thread.sleep(1000);
+
+    }
+
 
 }

@@ -11,6 +11,10 @@ import java.util.Map;
 /**
  * 降级 hystrix 进行容错保护的一种机制 此外还有资源隔离 熔断 缓存 机制
  * 降级是为了返回托底数据
+ *
+ * 工作流程 查看缓存-->查看是否熔断-->查看资源隔离-->降级
+ *
+ * Hystrix circuit short-circuited and is OPEN 当大量访问断掉后会触发熔断 feign默认为5s内20个
  */
 @Slf4j
 @Component
